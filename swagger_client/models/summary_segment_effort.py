@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -32,6 +32,7 @@ class SummarySegmentEffort(object):
     """
     swagger_types = {
         'id': 'int',
+        'activity_id': 'int',
         'elapsed_time': 'int',
         'start_date': 'datetime',
         'start_date_local': 'datetime',
@@ -41,6 +42,7 @@ class SummarySegmentEffort(object):
 
     attribute_map = {
         'id': 'id',
+        'activity_id': 'activity_id',
         'elapsed_time': 'elapsed_time',
         'start_date': 'start_date',
         'start_date_local': 'start_date_local',
@@ -48,10 +50,11 @@ class SummarySegmentEffort(object):
         'is_kom': 'is_kom'
     }
 
-    def __init__(self, id=None, elapsed_time=None, start_date=None, start_date_local=None, distance=None, is_kom=None):  # noqa: E501
+    def __init__(self, id=None, activity_id=None, elapsed_time=None, start_date=None, start_date_local=None, distance=None, is_kom=None):  # noqa: E501
         """SummarySegmentEffort - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
+        self._activity_id = None
         self._elapsed_time = None
         self._start_date = None
         self._start_date_local = None
@@ -61,6 +64,8 @@ class SummarySegmentEffort(object):
 
         if id is not None:
             self.id = id
+        if activity_id is not None:
+            self.activity_id = activity_id
         if elapsed_time is not None:
             self.elapsed_time = elapsed_time
         if start_date is not None:
@@ -94,6 +99,29 @@ class SummarySegmentEffort(object):
         """
 
         self._id = id
+
+    @property
+    def activity_id(self):
+        """Gets the activity_id of this SummarySegmentEffort.  # noqa: E501
+
+        The unique identifier of the activity related to this effort  # noqa: E501
+
+        :return: The activity_id of this SummarySegmentEffort.  # noqa: E501
+        :rtype: int
+        """
+        return self._activity_id
+
+    @activity_id.setter
+    def activity_id(self, activity_id):
+        """Sets the activity_id of this SummarySegmentEffort.
+
+        The unique identifier of the activity related to this effort  # noqa: E501
+
+        :param activity_id: The activity_id of this SummarySegmentEffort.  # noqa: E501
+        :type: int
+        """
+
+        self._activity_id = activity_id
 
     @property
     def elapsed_time(self):

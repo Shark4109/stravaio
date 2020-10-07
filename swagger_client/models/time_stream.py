@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,8 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.base_stream import BaseStream  # noqa: F401,E501
 
 
 class TimeStream(object):
@@ -33,117 +31,21 @@ class TimeStream(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'original_size': 'int',
-        'resolution': 'str',
-        'series_type': 'str',
         'data': 'list[int]'
     }
 
     attribute_map = {
-        'original_size': 'original_size',
-        'resolution': 'resolution',
-        'series_type': 'series_type',
         'data': 'data'
     }
 
-    def __init__(self, original_size=None, resolution=None, series_type=None, data=None):  # noqa: E501
+    def __init__(self, data=None):  # noqa: E501
         """TimeStream - a model defined in Swagger"""  # noqa: E501
 
-        self._original_size = None
-        self._resolution = None
-        self._series_type = None
         self._data = None
         self.discriminator = None
 
-        if original_size is not None:
-            self.original_size = original_size
-        if resolution is not None:
-            self.resolution = resolution
-        if series_type is not None:
-            self.series_type = series_type
         if data is not None:
             self.data = data
-
-    @property
-    def original_size(self):
-        """Gets the original_size of this TimeStream.  # noqa: E501
-
-        The number of data points in this stream  # noqa: E501
-
-        :return: The original_size of this TimeStream.  # noqa: E501
-        :rtype: int
-        """
-        return self._original_size
-
-    @original_size.setter
-    def original_size(self, original_size):
-        """Sets the original_size of this TimeStream.
-
-        The number of data points in this stream  # noqa: E501
-
-        :param original_size: The original_size of this TimeStream.  # noqa: E501
-        :type: int
-        """
-
-        self._original_size = original_size
-
-    @property
-    def resolution(self):
-        """Gets the resolution of this TimeStream.  # noqa: E501
-
-        The level of detail (sampling) in which this stream was returned  # noqa: E501
-
-        :return: The resolution of this TimeStream.  # noqa: E501
-        :rtype: str
-        """
-        return self._resolution
-
-    @resolution.setter
-    def resolution(self, resolution):
-        """Sets the resolution of this TimeStream.
-
-        The level of detail (sampling) in which this stream was returned  # noqa: E501
-
-        :param resolution: The resolution of this TimeStream.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["low", "medium", "high"]  # noqa: E501
-        if resolution not in allowed_values:
-            raise ValueError(
-                "Invalid value for `resolution` ({0}), must be one of {1}"  # noqa: E501
-                .format(resolution, allowed_values)
-            )
-
-        self._resolution = resolution
-
-    @property
-    def series_type(self):
-        """Gets the series_type of this TimeStream.  # noqa: E501
-
-        The base series used in the case the stream was downsampled  # noqa: E501
-
-        :return: The series_type of this TimeStream.  # noqa: E501
-        :rtype: str
-        """
-        return self._series_type
-
-    @series_type.setter
-    def series_type(self, series_type):
-        """Sets the series_type of this TimeStream.
-
-        The base series used in the case the stream was downsampled  # noqa: E501
-
-        :param series_type: The series_type of this TimeStream.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["distance", "time"]  # noqa: E501
-        if series_type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `series_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(series_type, allowed_values)
-            )
-
-        self._series_type = series_type
 
     @property
     def data(self):

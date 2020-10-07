@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,8 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.meta_athlete import MetaAthlete  # noqa: F401,E501
 
 
 class SummaryAthlete(object):
@@ -33,7 +31,6 @@ class SummaryAthlete(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'int',
         'resource_state': 'int',
         'firstname': 'str',
         'lastname': 'str',
@@ -43,8 +40,6 @@ class SummaryAthlete(object):
         'state': 'str',
         'country': 'str',
         'sex': 'str',
-        'friend': 'str',
-        'follower': 'str',
         'premium': 'bool',
         'summit': 'bool',
         'created_at': 'datetime',
@@ -52,7 +47,6 @@ class SummaryAthlete(object):
     }
 
     attribute_map = {
-        'id': 'id',
         'resource_state': 'resource_state',
         'firstname': 'firstname',
         'lastname': 'lastname',
@@ -62,18 +56,15 @@ class SummaryAthlete(object):
         'state': 'state',
         'country': 'country',
         'sex': 'sex',
-        'friend': 'friend',
-        'follower': 'follower',
         'premium': 'premium',
         'summit': 'summit',
         'created_at': 'created_at',
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, id=None, resource_state=None, firstname=None, lastname=None, profile_medium=None, profile=None, city=None, state=None, country=None, sex=None, friend=None, follower=None, premium=None, summit=None, created_at=None, updated_at=None):  # noqa: E501
+    def __init__(self, resource_state=None, firstname=None, lastname=None, profile_medium=None, profile=None, city=None, state=None, country=None, sex=None, premium=None, summit=None, created_at=None, updated_at=None):  # noqa: E501
         """SummaryAthlete - a model defined in Swagger"""  # noqa: E501
 
-        self._id = None
         self._resource_state = None
         self._firstname = None
         self._lastname = None
@@ -83,16 +74,12 @@ class SummaryAthlete(object):
         self._state = None
         self._country = None
         self._sex = None
-        self._friend = None
-        self._follower = None
         self._premium = None
         self._summit = None
         self._created_at = None
         self._updated_at = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
         if resource_state is not None:
             self.resource_state = resource_state
         if firstname is not None:
@@ -111,10 +98,6 @@ class SummaryAthlete(object):
             self.country = country
         if sex is not None:
             self.sex = sex
-        if friend is not None:
-            self.friend = friend
-        if follower is not None:
-            self.follower = follower
         if premium is not None:
             self.premium = premium
         if summit is not None:
@@ -123,29 +106,6 @@ class SummaryAthlete(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-
-    @property
-    def id(self):
-        """Gets the id of this SummaryAthlete.  # noqa: E501
-
-        The unique identifier of the athlete  # noqa: E501
-
-        :return: The id of this SummaryAthlete.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SummaryAthlete.
-
-        The unique identifier of the athlete  # noqa: E501
-
-        :param id: The id of this SummaryAthlete.  # noqa: E501
-        :type: int
-        """
-
-        self._id = id
 
     @property
     def resource_state(self):
@@ -359,64 +319,6 @@ class SummaryAthlete(object):
             )
 
         self._sex = sex
-
-    @property
-    def friend(self):
-        """Gets the friend of this SummaryAthlete.  # noqa: E501
-
-        Whether the currently logged-in athlete follows this athlete.  # noqa: E501
-
-        :return: The friend of this SummaryAthlete.  # noqa: E501
-        :rtype: str
-        """
-        return self._friend
-
-    @friend.setter
-    def friend(self, friend):
-        """Sets the friend of this SummaryAthlete.
-
-        Whether the currently logged-in athlete follows this athlete.  # noqa: E501
-
-        :param friend: The friend of this SummaryAthlete.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["pending", "accepted", "blocked"]  # noqa: E501
-        if friend not in allowed_values:
-            raise ValueError(
-                "Invalid value for `friend` ({0}), must be one of {1}"  # noqa: E501
-                .format(friend, allowed_values)
-            )
-
-        self._friend = friend
-
-    @property
-    def follower(self):
-        """Gets the follower of this SummaryAthlete.  # noqa: E501
-
-        Whether this athlete follows the currently logged-in athlete.  # noqa: E501
-
-        :return: The follower of this SummaryAthlete.  # noqa: E501
-        :rtype: str
-        """
-        return self._follower
-
-    @follower.setter
-    def follower(self, follower):
-        """Sets the follower of this SummaryAthlete.
-
-        Whether this athlete follows the currently logged-in athlete.  # noqa: E501
-
-        :param follower: The follower of this SummaryAthlete.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["pending", "accepted", "blocked"]  # noqa: E501
-        if follower not in allowed_values:
-            raise ValueError(
-                "Invalid value for `follower` ({0}), must be one of {1}"  # noqa: E501
-                .format(follower, allowed_values)
-            )
-
-        self._follower = follower
 
     @property
     def premium(self):

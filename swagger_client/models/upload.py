@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -32,6 +32,7 @@ class Upload(object):
     """
     swagger_types = {
         'id': 'int',
+        'id_str': 'str',
         'external_id': 'str',
         'error': 'str',
         'status': 'str',
@@ -40,16 +41,18 @@ class Upload(object):
 
     attribute_map = {
         'id': 'id',
+        'id_str': 'id_str',
         'external_id': 'external_id',
         'error': 'error',
         'status': 'status',
         'activity_id': 'activity_id'
     }
 
-    def __init__(self, id=None, external_id=None, error=None, status=None, activity_id=None):  # noqa: E501
+    def __init__(self, id=None, id_str=None, external_id=None, error=None, status=None, activity_id=None):  # noqa: E501
         """Upload - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
+        self._id_str = None
         self._external_id = None
         self._error = None
         self._status = None
@@ -58,6 +61,8 @@ class Upload(object):
 
         if id is not None:
             self.id = id
+        if id_str is not None:
+            self.id_str = id_str
         if external_id is not None:
             self.external_id = external_id
         if error is not None:
@@ -89,6 +94,29 @@ class Upload(object):
         """
 
         self._id = id
+
+    @property
+    def id_str(self):
+        """Gets the id_str of this Upload.  # noqa: E501
+
+        The unique identifier of the upload in string format  # noqa: E501
+
+        :return: The id_str of this Upload.  # noqa: E501
+        :rtype: str
+        """
+        return self._id_str
+
+    @id_str.setter
+    def id_str(self, id_str):
+        """Sets the id_str of this Upload.
+
+        The unique identifier of the upload in string format  # noqa: E501
+
+        :param id_str: The id_str of this Upload.  # noqa: E501
+        :type: str
+        """
+
+        self._id_str = id_str
 
     @property
     def external_id(self):

@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,18 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.altitude_stream import AltitudeStream  # noqa: F401,E501
-from swagger_client.models.cadence_stream import CadenceStream  # noqa: F401,E501
-from swagger_client.models.distance_stream import DistanceStream  # noqa: F401,E501
-from swagger_client.models.heartrate_stream import HeartrateStream  # noqa: F401,E501
-from swagger_client.models.lat_lng_stream import LatLngStream  # noqa: F401,E501
-from swagger_client.models.moving_stream import MovingStream  # noqa: F401,E501
-from swagger_client.models.power_stream import PowerStream  # noqa: F401,E501
-from swagger_client.models.smooth_grade_stream import SmoothGradeStream  # noqa: F401,E501
-from swagger_client.models.smooth_velocity_stream import SmoothVelocityStream  # noqa: F401,E501
-from swagger_client.models.temperature_stream import TemperatureStream  # noqa: F401,E501
-from swagger_client.models.time_stream import TimeStream  # noqa: F401,E501
 
 
 class StreamSet(object):

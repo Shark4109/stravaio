@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -155,137 +155,6 @@ class SegmentsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_leaderboard_by_segment_id(self, id, **kwargs):  # noqa: E501
-        """Get Segment Leaderboard  # noqa: E501
-
-        Returns the specified segment leaderboard.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_leaderboard_by_segment_id(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: The identifier of the segment leaderboard. (required)
-        :param str gender: Filter by gender.
-        :param str age_group: Summit Feature. Filter by age group.
-        :param str weight_class: Summit Feature. Filter by weight class.
-        :param bool following: Filter by friends of the authenticated athlete.
-        :param int club_id: Filter by club.
-        :param str date_range: Filter by date range.
-        :param int context_entries:
-        :param int page: Page number.
-        :param int per_page: Number of items per page. Defaults to 30.
-        :return: SegmentLeaderboard
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.get_leaderboard_by_segment_id_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_leaderboard_by_segment_id_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def get_leaderboard_by_segment_id_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Get Segment Leaderboard  # noqa: E501
-
-        Returns the specified segment leaderboard.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_leaderboard_by_segment_id_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: The identifier of the segment leaderboard. (required)
-        :param str gender: Filter by gender.
-        :param str age_group: Summit Feature. Filter by age group.
-        :param str weight_class: Summit Feature. Filter by weight class.
-        :param bool following: Filter by friends of the authenticated athlete.
-        :param int club_id: Filter by club.
-        :param str date_range: Filter by date range.
-        :param int context_entries:
-        :param int page: Page number.
-        :param int per_page: Number of items per page. Defaults to 30.
-        :return: SegmentLeaderboard
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'gender', 'age_group', 'weight_class', 'following', 'club_id', 'date_range', 'context_entries', 'page', 'per_page']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_leaderboard_by_segment_id" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `get_leaderboard_by_segment_id`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'gender' in params:
-            query_params.append(('gender', params['gender']))  # noqa: E501
-        if 'age_group' in params:
-            query_params.append(('age_group', params['age_group']))  # noqa: E501
-        if 'weight_class' in params:
-            query_params.append(('weight_class', params['weight_class']))  # noqa: E501
-        if 'following' in params:
-            query_params.append(('following', params['following']))  # noqa: E501
-        if 'club_id' in params:
-            query_params.append(('club_id', params['club_id']))  # noqa: E501
-        if 'date_range' in params:
-            query_params.append(('date_range', params['date_range']))  # noqa: E501
-        if 'context_entries' in params:
-            query_params.append(('context_entries', params['context_entries']))  # noqa: E501
-        if 'page' in params:
-            query_params.append(('page', params['page']))  # noqa: E501
-        if 'per_page' in params:
-            query_params.append(('per_page', params['per_page']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['strava_oauth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/segments/{id}/leaderboard', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SegmentLeaderboard',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def get_logged_in_athlete_starred_segments(self, **kwargs):  # noqa: E501
         """List Starred Segments  # noqa: E501
 
@@ -296,7 +165,7 @@ class SegmentsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummarySegment]
                  If the method is called asynchronously,
@@ -319,7 +188,7 @@ class SegmentsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummarySegment]
                  If the method is called asynchronously,

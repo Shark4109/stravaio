@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -210,7 +210,7 @@ class AthletesApi(object):
     def get_stats(self, id, **kwargs):  # noqa: E501
         """Get Athlete Stats  # noqa: E501
 
-        Returns the activity stats of an athlete.  # noqa: E501
+        Returns the activity stats of an athlete. Only includes data from activities set to Everyone visibilty.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_stats(id, async_req=True)
@@ -218,8 +218,6 @@ class AthletesApi(object):
 
         :param async_req bool
         :param int id: The identifier of the athlete. Must match the authenticated athlete. (required)
-        :param int page: Page number.
-        :param int per_page: Number of items per page. Defaults to 30.
         :return: ActivityStats
                  If the method is called asynchronously,
                  returns the request thread.
@@ -234,7 +232,7 @@ class AthletesApi(object):
     def get_stats_with_http_info(self, id, **kwargs):  # noqa: E501
         """Get Athlete Stats  # noqa: E501
 
-        Returns the activity stats of an athlete.  # noqa: E501
+        Returns the activity stats of an athlete. Only includes data from activities set to Everyone visibilty.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_stats_with_http_info(id, async_req=True)
@@ -242,14 +240,12 @@ class AthletesApi(object):
 
         :param async_req bool
         :param int id: The identifier of the athlete. Must match the authenticated athlete. (required)
-        :param int page: Page number.
-        :param int per_page: Number of items per page. Defaults to 30.
         :return: ActivityStats
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'page', 'per_page']  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -276,10 +272,6 @@ class AthletesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'page' in params:
-            query_params.append(('page', params['page']))  # noqa: E501
-        if 'per_page' in params:
-            query_params.append(('per_page', params['per_page']))  # noqa: E501
 
         header_params = {}
 
@@ -385,6 +377,10 @@ class AthletesApi(object):
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['strava_oauth']  # noqa: E501

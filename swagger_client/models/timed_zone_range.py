@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,8 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.zone_range import ZoneRange  # noqa: F401,E501
 
 
 class TimedZoneRange(object):
@@ -33,77 +31,21 @@ class TimedZoneRange(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'min': 'int',
-        'max': 'int',
         'time': 'int'
     }
 
     attribute_map = {
-        'min': 'min',
-        'max': 'max',
         'time': 'time'
     }
 
-    def __init__(self, min=None, max=None, time=None):  # noqa: E501
+    def __init__(self, time=None):  # noqa: E501
         """TimedZoneRange - a model defined in Swagger"""  # noqa: E501
 
-        self._min = None
-        self._max = None
         self._time = None
         self.discriminator = None
 
-        if min is not None:
-            self.min = min
-        if max is not None:
-            self.max = max
         if time is not None:
             self.time = time
-
-    @property
-    def min(self):
-        """Gets the min of this TimedZoneRange.  # noqa: E501
-
-        The minimum value in the range.  # noqa: E501
-
-        :return: The min of this TimedZoneRange.  # noqa: E501
-        :rtype: int
-        """
-        return self._min
-
-    @min.setter
-    def min(self, min):
-        """Sets the min of this TimedZoneRange.
-
-        The minimum value in the range.  # noqa: E501
-
-        :param min: The min of this TimedZoneRange.  # noqa: E501
-        :type: int
-        """
-
-        self._min = min
-
-    @property
-    def max(self):
-        """Gets the max of this TimedZoneRange.  # noqa: E501
-
-        The maximum value in the range.  # noqa: E501
-
-        :return: The max of this TimedZoneRange.  # noqa: E501
-        :rtype: int
-        """
-        return self._max
-
-    @max.setter
-    def max(self, max):
-        """Sets the max of this TimedZoneRange.
-
-        The maximum value in the range.  # noqa: E501
-
-        :param max: The max of this TimedZoneRange.  # noqa: E501
-        :type: int
-        """
-
-        self._max = max
 
     @property
     def time(self):

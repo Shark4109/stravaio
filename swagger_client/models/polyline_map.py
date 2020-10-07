@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -84,7 +84,7 @@ class PolylineMap(object):
     def polyline(self):
         """Gets the polyline of this PolylineMap.  # noqa: E501
 
-        The polyline of the map  # noqa: E501
+        The polyline of the map, only returned on detailed representation of an object  # noqa: E501
 
         :return: The polyline of this PolylineMap.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class PolylineMap(object):
     def polyline(self, polyline):
         """Sets the polyline of this PolylineMap.
 
-        The polyline of the map  # noqa: E501
+        The polyline of the map, only returned on detailed representation of an object  # noqa: E501
 
         :param polyline: The polyline of this PolylineMap.  # noqa: E501
         :type: str

@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,11 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.polyline_map import PolylineMap  # noqa: F401,E501
-from swagger_client.models.route_direction import RouteDirection  # noqa: F401,E501
-from swagger_client.models.summary_athlete import SummaryAthlete  # noqa: F401,E501
-from swagger_client.models.summary_segment import SummarySegment  # noqa: F401,E501
 
 
 class Route(object):
@@ -41,6 +36,7 @@ class Route(object):
         'distance': 'float',
         'elevation_gain': 'float',
         'id': 'int',
+        'id_str': 'str',
         'map': 'PolylineMap',
         'name': 'str',
         'private': 'bool',
@@ -48,8 +44,10 @@ class Route(object):
         'timestamp': 'int',
         'type': 'int',
         'sub_type': 'int',
-        'segments': 'list[SummarySegment]',
-        'directions': 'list[RouteDirection]'
+        'created_at': 'datetime',
+        'updated_at': 'datetime',
+        'estimated_moving_time': 'int',
+        'segments': 'list[SummarySegment]'
     }
 
     attribute_map = {
@@ -58,6 +56,7 @@ class Route(object):
         'distance': 'distance',
         'elevation_gain': 'elevation_gain',
         'id': 'id',
+        'id_str': 'id_str',
         'map': 'map',
         'name': 'name',
         'private': 'private',
@@ -65,11 +64,13 @@ class Route(object):
         'timestamp': 'timestamp',
         'type': 'type',
         'sub_type': 'sub_type',
-        'segments': 'segments',
-        'directions': 'directions'
+        'created_at': 'created_at',
+        'updated_at': 'updated_at',
+        'estimated_moving_time': 'estimated_moving_time',
+        'segments': 'segments'
     }
 
-    def __init__(self, athlete=None, description=None, distance=None, elevation_gain=None, id=None, map=None, name=None, private=None, starred=None, timestamp=None, type=None, sub_type=None, segments=None, directions=None):  # noqa: E501
+    def __init__(self, athlete=None, description=None, distance=None, elevation_gain=None, id=None, id_str=None, map=None, name=None, private=None, starred=None, timestamp=None, type=None, sub_type=None, created_at=None, updated_at=None, estimated_moving_time=None, segments=None):  # noqa: E501
         """Route - a model defined in Swagger"""  # noqa: E501
 
         self._athlete = None
@@ -77,6 +78,7 @@ class Route(object):
         self._distance = None
         self._elevation_gain = None
         self._id = None
+        self._id_str = None
         self._map = None
         self._name = None
         self._private = None
@@ -84,8 +86,10 @@ class Route(object):
         self._timestamp = None
         self._type = None
         self._sub_type = None
+        self._created_at = None
+        self._updated_at = None
+        self._estimated_moving_time = None
         self._segments = None
-        self._directions = None
         self.discriminator = None
 
         if athlete is not None:
@@ -98,6 +102,8 @@ class Route(object):
             self.elevation_gain = elevation_gain
         if id is not None:
             self.id = id
+        if id_str is not None:
+            self.id_str = id_str
         if map is not None:
             self.map = map
         if name is not None:
@@ -112,10 +118,14 @@ class Route(object):
             self.type = type
         if sub_type is not None:
             self.sub_type = sub_type
+        if created_at is not None:
+            self.created_at = created_at
+        if updated_at is not None:
+            self.updated_at = updated_at
+        if estimated_moving_time is not None:
+            self.estimated_moving_time = estimated_moving_time
         if segments is not None:
             self.segments = segments
-        if directions is not None:
-            self.directions = directions
 
     @property
     def athlete(self):
@@ -231,6 +241,29 @@ class Route(object):
         self._id = id
 
     @property
+    def id_str(self):
+        """Gets the id_str of this Route.  # noqa: E501
+
+        The unique identifier of the route in string format  # noqa: E501
+
+        :return: The id_str of this Route.  # noqa: E501
+        :rtype: str
+        """
+        return self._id_str
+
+    @id_str.setter
+    def id_str(self, id_str):
+        """Sets the id_str of this Route.
+
+        The unique identifier of the route in string format  # noqa: E501
+
+        :param id_str: The id_str of this Route.  # noqa: E501
+        :type: str
+        """
+
+        self._id_str = id_str
+
+    @property
     def map(self):
         """Gets the map of this Route.  # noqa: E501
 
@@ -324,6 +357,7 @@ class Route(object):
     def timestamp(self):
         """Gets the timestamp of this Route.  # noqa: E501
 
+        An epoch timestamp of when the route was created  # noqa: E501
 
         :return: The timestamp of this Route.  # noqa: E501
         :rtype: int
@@ -334,6 +368,7 @@ class Route(object):
     def timestamp(self, timestamp):
         """Sets the timestamp of this Route.
 
+        An epoch timestamp of when the route was created  # noqa: E501
 
         :param timestamp: The timestamp of this Route.  # noqa: E501
         :type: int
@@ -388,6 +423,75 @@ class Route(object):
         self._sub_type = sub_type
 
     @property
+    def created_at(self):
+        """Gets the created_at of this Route.  # noqa: E501
+
+        The time at which the route was created  # noqa: E501
+
+        :return: The created_at of this Route.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this Route.
+
+        The time at which the route was created  # noqa: E501
+
+        :param created_at: The created_at of this Route.  # noqa: E501
+        :type: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this Route.  # noqa: E501
+
+        The time at which the route was last updated  # noqa: E501
+
+        :return: The updated_at of this Route.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this Route.
+
+        The time at which the route was last updated  # noqa: E501
+
+        :param updated_at: The updated_at of this Route.  # noqa: E501
+        :type: datetime
+        """
+
+        self._updated_at = updated_at
+
+    @property
+    def estimated_moving_time(self):
+        """Gets the estimated_moving_time of this Route.  # noqa: E501
+
+        Estimated time in seconds for the authenticated athlete to complete route  # noqa: E501
+
+        :return: The estimated_moving_time of this Route.  # noqa: E501
+        :rtype: int
+        """
+        return self._estimated_moving_time
+
+    @estimated_moving_time.setter
+    def estimated_moving_time(self, estimated_moving_time):
+        """Sets the estimated_moving_time of this Route.
+
+        Estimated time in seconds for the authenticated athlete to complete route  # noqa: E501
+
+        :param estimated_moving_time: The estimated_moving_time of this Route.  # noqa: E501
+        :type: int
+        """
+
+        self._estimated_moving_time = estimated_moving_time
+
+    @property
     def segments(self):
         """Gets the segments of this Route.  # noqa: E501
 
@@ -409,29 +513,6 @@ class Route(object):
         """
 
         self._segments = segments
-
-    @property
-    def directions(self):
-        """Gets the directions of this Route.  # noqa: E501
-
-        The directions of this route  # noqa: E501
-
-        :return: The directions of this Route.  # noqa: E501
-        :rtype: list[RouteDirection]
-        """
-        return self._directions
-
-    @directions.setter
-    def directions(self, directions):
-        """Sets the directions of this Route.
-
-        The directions of this route  # noqa: E501
-
-        :param directions: The directions of this Route.  # noqa: E501
-        :type: list[RouteDirection]
-        """
-
-        self._directions = directions
 
     def to_dict(self):
         """Returns the model properties as a dict"""

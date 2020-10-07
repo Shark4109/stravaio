@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,8 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.meta_club import MetaClub  # noqa: F401,E501
 
 
 class SummaryClub(object):
@@ -33,9 +31,6 @@ class SummaryClub(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'int',
-        'resource_state': 'int',
-        'name': 'str',
         'profile_medium': 'str',
         'cover_photo': 'str',
         'cover_photo_small': 'str',
@@ -51,9 +46,6 @@ class SummaryClub(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'resource_state': 'resource_state',
-        'name': 'name',
         'profile_medium': 'profile_medium',
         'cover_photo': 'cover_photo',
         'cover_photo_small': 'cover_photo_small',
@@ -68,12 +60,9 @@ class SummaryClub(object):
         'url': 'url'
     }
 
-    def __init__(self, id=None, resource_state=None, name=None, profile_medium=None, cover_photo=None, cover_photo_small=None, sport_type=None, city=None, state=None, country=None, private=None, member_count=None, featured=None, verified=None, url=None):  # noqa: E501
+    def __init__(self, profile_medium=None, cover_photo=None, cover_photo_small=None, sport_type=None, city=None, state=None, country=None, private=None, member_count=None, featured=None, verified=None, url=None):  # noqa: E501
         """SummaryClub - a model defined in Swagger"""  # noqa: E501
 
-        self._id = None
-        self._resource_state = None
-        self._name = None
         self._profile_medium = None
         self._cover_photo = None
         self._cover_photo_small = None
@@ -88,12 +77,6 @@ class SummaryClub(object):
         self._url = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if resource_state is not None:
-            self.resource_state = resource_state
-        if name is not None:
-            self.name = name
         if profile_medium is not None:
             self.profile_medium = profile_medium
         if cover_photo is not None:
@@ -118,75 +101,6 @@ class SummaryClub(object):
             self.verified = verified
         if url is not None:
             self.url = url
-
-    @property
-    def id(self):
-        """Gets the id of this SummaryClub.  # noqa: E501
-
-        The club's unique identifier.  # noqa: E501
-
-        :return: The id of this SummaryClub.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SummaryClub.
-
-        The club's unique identifier.  # noqa: E501
-
-        :param id: The id of this SummaryClub.  # noqa: E501
-        :type: int
-        """
-
-        self._id = id
-
-    @property
-    def resource_state(self):
-        """Gets the resource_state of this SummaryClub.  # noqa: E501
-
-        Resource state, indicates level of detail. Possible values: 1 -> \"meta\", 2 -> \"summary\", 3 -> \"detail\"  # noqa: E501
-
-        :return: The resource_state of this SummaryClub.  # noqa: E501
-        :rtype: int
-        """
-        return self._resource_state
-
-    @resource_state.setter
-    def resource_state(self, resource_state):
-        """Sets the resource_state of this SummaryClub.
-
-        Resource state, indicates level of detail. Possible values: 1 -> \"meta\", 2 -> \"summary\", 3 -> \"detail\"  # noqa: E501
-
-        :param resource_state: The resource_state of this SummaryClub.  # noqa: E501
-        :type: int
-        """
-
-        self._resource_state = resource_state
-
-    @property
-    def name(self):
-        """Gets the name of this SummaryClub.  # noqa: E501
-
-        The club's name.  # noqa: E501
-
-        :return: The name of this SummaryClub.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SummaryClub.
-
-        The club's name.  # noqa: E501
-
-        :param name: The name of this SummaryClub.  # noqa: E501
-        :type: str
-        """
-
-        self._name = name
 
     @property
     def profile_medium(self):

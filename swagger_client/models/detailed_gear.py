@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,8 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.summary_gear import SummaryGear  # noqa: F401,E501
 
 
 class DetailedGear(object):
@@ -33,11 +31,6 @@ class DetailedGear(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'str',
-        'resource_state': 'int',
-        'primary': 'bool',
-        'name': 'str',
-        'distance': 'float',
         'brand_name': 'str',
         'model_name': 'str',
         'frame_type': 'int',
@@ -45,41 +38,21 @@ class DetailedGear(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'resource_state': 'resource_state',
-        'primary': 'primary',
-        'name': 'name',
-        'distance': 'distance',
         'brand_name': 'brand_name',
         'model_name': 'model_name',
         'frame_type': 'frame_type',
         'description': 'description'
     }
 
-    def __init__(self, id=None, resource_state=None, primary=None, name=None, distance=None, brand_name=None, model_name=None, frame_type=None, description=None):  # noqa: E501
+    def __init__(self, brand_name=None, model_name=None, frame_type=None, description=None):  # noqa: E501
         """DetailedGear - a model defined in Swagger"""  # noqa: E501
 
-        self._id = None
-        self._resource_state = None
-        self._primary = None
-        self._name = None
-        self._distance = None
         self._brand_name = None
         self._model_name = None
         self._frame_type = None
         self._description = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if resource_state is not None:
-            self.resource_state = resource_state
-        if primary is not None:
-            self.primary = primary
-        if name is not None:
-            self.name = name
-        if distance is not None:
-            self.distance = distance
         if brand_name is not None:
             self.brand_name = brand_name
         if model_name is not None:
@@ -88,121 +61,6 @@ class DetailedGear(object):
             self.frame_type = frame_type
         if description is not None:
             self.description = description
-
-    @property
-    def id(self):
-        """Gets the id of this DetailedGear.  # noqa: E501
-
-        The gear's unique identifier.  # noqa: E501
-
-        :return: The id of this DetailedGear.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DetailedGear.
-
-        The gear's unique identifier.  # noqa: E501
-
-        :param id: The id of this DetailedGear.  # noqa: E501
-        :type: str
-        """
-
-        self._id = id
-
-    @property
-    def resource_state(self):
-        """Gets the resource_state of this DetailedGear.  # noqa: E501
-
-        Resource state, indicates level of detail. Possible values: 2 -> \"summary\", 3 -> \"detail\"  # noqa: E501
-
-        :return: The resource_state of this DetailedGear.  # noqa: E501
-        :rtype: int
-        """
-        return self._resource_state
-
-    @resource_state.setter
-    def resource_state(self, resource_state):
-        """Sets the resource_state of this DetailedGear.
-
-        Resource state, indicates level of detail. Possible values: 2 -> \"summary\", 3 -> \"detail\"  # noqa: E501
-
-        :param resource_state: The resource_state of this DetailedGear.  # noqa: E501
-        :type: int
-        """
-
-        self._resource_state = resource_state
-
-    @property
-    def primary(self):
-        """Gets the primary of this DetailedGear.  # noqa: E501
-
-        Whether this gear's is the owner's default one.  # noqa: E501
-
-        :return: The primary of this DetailedGear.  # noqa: E501
-        :rtype: bool
-        """
-        return self._primary
-
-    @primary.setter
-    def primary(self, primary):
-        """Sets the primary of this DetailedGear.
-
-        Whether this gear's is the owner's default one.  # noqa: E501
-
-        :param primary: The primary of this DetailedGear.  # noqa: E501
-        :type: bool
-        """
-
-        self._primary = primary
-
-    @property
-    def name(self):
-        """Gets the name of this DetailedGear.  # noqa: E501
-
-        The gear's name.  # noqa: E501
-
-        :return: The name of this DetailedGear.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this DetailedGear.
-
-        The gear's name.  # noqa: E501
-
-        :param name: The name of this DetailedGear.  # noqa: E501
-        :type: str
-        """
-
-        self._name = name
-
-    @property
-    def distance(self):
-        """Gets the distance of this DetailedGear.  # noqa: E501
-
-        The distance logged with this gear.  # noqa: E501
-
-        :return: The distance of this DetailedGear.  # noqa: E501
-        :rtype: float
-        """
-        return self._distance
-
-    @distance.setter
-    def distance(self, distance):
-        """Sets the distance of this DetailedGear.
-
-        The distance logged with this gear.  # noqa: E501
-
-        :param distance: The distance of this DetailedGear.  # noqa: E501
-        :type: float
-        """
-
-        self._distance = distance
 
     @property
     def brand_name(self):

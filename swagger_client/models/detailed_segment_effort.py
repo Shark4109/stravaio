@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,11 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.meta_activity import MetaActivity  # noqa: F401,E501
-from swagger_client.models.meta_athlete import MetaAthlete  # noqa: F401,E501
-from swagger_client.models.summary_segment import SummarySegment  # noqa: F401,E501
-from swagger_client.models.summary_segment_effort import SummarySegmentEffort  # noqa: F401,E501
 
 
 class DetailedSegmentEffort(object):
@@ -36,12 +31,6 @@ class DetailedSegmentEffort(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'int',
-        'elapsed_time': 'int',
-        'start_date': 'datetime',
-        'start_date_local': 'datetime',
-        'distance': 'float',
-        'is_kom': 'bool',
         'name': 'str',
         'activity': 'MetaActivity',
         'athlete': 'MetaAthlete',
@@ -60,12 +49,6 @@ class DetailedSegmentEffort(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'elapsed_time': 'elapsed_time',
-        'start_date': 'start_date',
-        'start_date_local': 'start_date_local',
-        'distance': 'distance',
-        'is_kom': 'is_kom',
         'name': 'name',
         'activity': 'activity',
         'athlete': 'athlete',
@@ -83,15 +66,9 @@ class DetailedSegmentEffort(object):
         'hidden': 'hidden'
     }
 
-    def __init__(self, id=None, elapsed_time=None, start_date=None, start_date_local=None, distance=None, is_kom=None, name=None, activity=None, athlete=None, moving_time=None, start_index=None, end_index=None, average_cadence=None, average_watts=None, device_watts=None, average_heartrate=None, max_heartrate=None, segment=None, kom_rank=None, pr_rank=None, hidden=None):  # noqa: E501
+    def __init__(self, name=None, activity=None, athlete=None, moving_time=None, start_index=None, end_index=None, average_cadence=None, average_watts=None, device_watts=None, average_heartrate=None, max_heartrate=None, segment=None, kom_rank=None, pr_rank=None, hidden=None):  # noqa: E501
         """DetailedSegmentEffort - a model defined in Swagger"""  # noqa: E501
 
-        self._id = None
-        self._elapsed_time = None
-        self._start_date = None
-        self._start_date_local = None
-        self._distance = None
-        self._is_kom = None
         self._name = None
         self._activity = None
         self._athlete = None
@@ -109,18 +86,6 @@ class DetailedSegmentEffort(object):
         self._hidden = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if elapsed_time is not None:
-            self.elapsed_time = elapsed_time
-        if start_date is not None:
-            self.start_date = start_date
-        if start_date_local is not None:
-            self.start_date_local = start_date_local
-        if distance is not None:
-            self.distance = distance
-        if is_kom is not None:
-            self.is_kom = is_kom
         if name is not None:
             self.name = name
         if activity is not None:
@@ -151,144 +116,6 @@ class DetailedSegmentEffort(object):
             self.pr_rank = pr_rank
         if hidden is not None:
             self.hidden = hidden
-
-    @property
-    def id(self):
-        """Gets the id of this DetailedSegmentEffort.  # noqa: E501
-
-        The unique identifier of this effort  # noqa: E501
-
-        :return: The id of this DetailedSegmentEffort.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DetailedSegmentEffort.
-
-        The unique identifier of this effort  # noqa: E501
-
-        :param id: The id of this DetailedSegmentEffort.  # noqa: E501
-        :type: int
-        """
-
-        self._id = id
-
-    @property
-    def elapsed_time(self):
-        """Gets the elapsed_time of this DetailedSegmentEffort.  # noqa: E501
-
-        The effort's elapsed time  # noqa: E501
-
-        :return: The elapsed_time of this DetailedSegmentEffort.  # noqa: E501
-        :rtype: int
-        """
-        return self._elapsed_time
-
-    @elapsed_time.setter
-    def elapsed_time(self, elapsed_time):
-        """Sets the elapsed_time of this DetailedSegmentEffort.
-
-        The effort's elapsed time  # noqa: E501
-
-        :param elapsed_time: The elapsed_time of this DetailedSegmentEffort.  # noqa: E501
-        :type: int
-        """
-
-        self._elapsed_time = elapsed_time
-
-    @property
-    def start_date(self):
-        """Gets the start_date of this DetailedSegmentEffort.  # noqa: E501
-
-        The time at which the effort was started.  # noqa: E501
-
-        :return: The start_date of this DetailedSegmentEffort.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._start_date
-
-    @start_date.setter
-    def start_date(self, start_date):
-        """Sets the start_date of this DetailedSegmentEffort.
-
-        The time at which the effort was started.  # noqa: E501
-
-        :param start_date: The start_date of this DetailedSegmentEffort.  # noqa: E501
-        :type: datetime
-        """
-
-        self._start_date = start_date
-
-    @property
-    def start_date_local(self):
-        """Gets the start_date_local of this DetailedSegmentEffort.  # noqa: E501
-
-        The time at which the effort was started in the local timezone.  # noqa: E501
-
-        :return: The start_date_local of this DetailedSegmentEffort.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._start_date_local
-
-    @start_date_local.setter
-    def start_date_local(self, start_date_local):
-        """Sets the start_date_local of this DetailedSegmentEffort.
-
-        The time at which the effort was started in the local timezone.  # noqa: E501
-
-        :param start_date_local: The start_date_local of this DetailedSegmentEffort.  # noqa: E501
-        :type: datetime
-        """
-
-        self._start_date_local = start_date_local
-
-    @property
-    def distance(self):
-        """Gets the distance of this DetailedSegmentEffort.  # noqa: E501
-
-        The effort's distance in meters  # noqa: E501
-
-        :return: The distance of this DetailedSegmentEffort.  # noqa: E501
-        :rtype: float
-        """
-        return self._distance
-
-    @distance.setter
-    def distance(self, distance):
-        """Sets the distance of this DetailedSegmentEffort.
-
-        The effort's distance in meters  # noqa: E501
-
-        :param distance: The distance of this DetailedSegmentEffort.  # noqa: E501
-        :type: float
-        """
-
-        self._distance = distance
-
-    @property
-    def is_kom(self):
-        """Gets the is_kom of this DetailedSegmentEffort.  # noqa: E501
-
-        Whether this effort is the current best on the leaderboard  # noqa: E501
-
-        :return: The is_kom of this DetailedSegmentEffort.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_kom
-
-    @is_kom.setter
-    def is_kom(self, is_kom):
-        """Sets the is_kom of this DetailedSegmentEffort.
-
-        Whether this effort is the current best on the leaderboard  # noqa: E501
-
-        :param is_kom: The is_kom of this DetailedSegmentEffort.  # noqa: E501
-        :type: bool
-        """
-
-        self._is_kom = is_kom
 
     @property
     def name(self):

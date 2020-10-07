@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,9 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.lat_lng import LatLng  # noqa: F401,E501
-from swagger_client.models.summary_segment_effort import SummarySegmentEffort  # noqa: F401,E501
 
 
 class SummarySegment(object):
@@ -49,7 +46,8 @@ class SummarySegment(object):
         'state': 'str',
         'country': 'str',
         'private': 'bool',
-        'athlete_pr_effort': 'SummarySegmentEffort'
+        'athlete_pr_effort': 'SummarySegmentEffort',
+        'athlete_segment_stats': 'SummaryPRSegmentEffort'
     }
 
     attribute_map = {
@@ -68,10 +66,11 @@ class SummarySegment(object):
         'state': 'state',
         'country': 'country',
         'private': 'private',
-        'athlete_pr_effort': 'athlete_pr_effort'
+        'athlete_pr_effort': 'athlete_pr_effort',
+        'athlete_segment_stats': 'athlete_segment_stats'
     }
 
-    def __init__(self, id=None, name=None, activity_type=None, distance=None, average_grade=None, maximum_grade=None, elevation_high=None, elevation_low=None, start_latlng=None, end_latlng=None, climb_category=None, city=None, state=None, country=None, private=None, athlete_pr_effort=None):  # noqa: E501
+    def __init__(self, id=None, name=None, activity_type=None, distance=None, average_grade=None, maximum_grade=None, elevation_high=None, elevation_low=None, start_latlng=None, end_latlng=None, climb_category=None, city=None, state=None, country=None, private=None, athlete_pr_effort=None, athlete_segment_stats=None):  # noqa: E501
         """SummarySegment - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
@@ -90,6 +89,7 @@ class SummarySegment(object):
         self._country = None
         self._private = None
         self._athlete_pr_effort = None
+        self._athlete_segment_stats = None
         self.discriminator = None
 
         if id is not None:
@@ -124,6 +124,8 @@ class SummarySegment(object):
             self.private = private
         if athlete_pr_effort is not None:
             self.athlete_pr_effort = athlete_pr_effort
+        if athlete_segment_stats is not None:
+            self.athlete_segment_stats = athlete_segment_stats
 
     @property
     def id(self):
@@ -359,7 +361,7 @@ class SummarySegment(object):
     def climb_category(self):
         """Gets the climb_category of this SummarySegment.  # noqa: E501
 
-        The category of the climb  # noqa: E501
+        The category of the climb [0, 5]. Higher is harder ie. 5 is Hors catégorie, 0 is uncategorized in climb_category.  # noqa: E501
 
         :return: The climb_category of this SummarySegment.  # noqa: E501
         :rtype: int
@@ -370,15 +372,11 @@ class SummarySegment(object):
     def climb_category(self, climb_category):
         """Sets the climb_category of this SummarySegment.
 
-        The category of the climb  # noqa: E501
+        The category of the climb [0, 5]. Higher is harder ie. 5 is Hors catégorie, 0 is uncategorized in climb_category.  # noqa: E501
 
         :param climb_category: The climb_category of this SummarySegment.  # noqa: E501
         :type: int
         """
-        if climb_category is not None and climb_category > 5:  # noqa: E501
-            raise ValueError("Invalid value for `climb_category`, must be a value less than or equal to `5`")  # noqa: E501
-        if climb_category is not None and climb_category < 0:  # noqa: E501
-            raise ValueError("Invalid value for `climb_category`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._climb_category = climb_category
 
@@ -494,6 +492,27 @@ class SummarySegment(object):
         """
 
         self._athlete_pr_effort = athlete_pr_effort
+
+    @property
+    def athlete_segment_stats(self):
+        """Gets the athlete_segment_stats of this SummarySegment.  # noqa: E501
+
+
+        :return: The athlete_segment_stats of this SummarySegment.  # noqa: E501
+        :rtype: SummaryPRSegmentEffort
+        """
+        return self._athlete_segment_stats
+
+    @athlete_segment_stats.setter
+    def athlete_segment_stats(self, athlete_segment_stats):
+        """Sets the athlete_segment_stats of this SummarySegment.
+
+
+        :param athlete_segment_stats: The athlete_segment_stats of this SummarySegment.  # noqa: E501
+        :type: SummaryPRSegmentEffort
+        """
+
+        self._athlete_segment_stats = athlete_segment_stats
 
     def to_dict(self):
         """Returns the model properties as a dict"""

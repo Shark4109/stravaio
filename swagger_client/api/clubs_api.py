@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -44,7 +44,7 @@ class ClubsApi(object):
 
         :param async_req bool
         :param int id: The identifier of the club. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryActivity]
                  If the method is called asynchronously,
@@ -68,7 +68,7 @@ class ClubsApi(object):
 
         :param async_req bool
         :param int id: The identifier of the club. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryActivity]
                  If the method is called asynchronously,
@@ -137,7 +137,7 @@ class ClubsApi(object):
             collection_formats=collection_formats)
 
     def get_club_admins_by_id(self, id, **kwargs):  # noqa: E501
-        """List Club Administrators.  # noqa: E501
+        """List Club Administrators  # noqa: E501
 
         Returns a list of the administrators of a given club.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -147,7 +147,7 @@ class ClubsApi(object):
 
         :param async_req bool
         :param int id: The identifier of the club. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryAthlete]
                  If the method is called asynchronously,
@@ -161,7 +161,7 @@ class ClubsApi(object):
             return data
 
     def get_club_admins_by_id_with_http_info(self, id, **kwargs):  # noqa: E501
-        """List Club Administrators.  # noqa: E501
+        """List Club Administrators  # noqa: E501
 
         Returns a list of the administrators of a given club.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -171,7 +171,7 @@ class ClubsApi(object):
 
         :param async_req bool
         :param int id: The identifier of the club. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryAthlete]
                  If the method is called asynchronously,
@@ -345,7 +345,7 @@ class ClubsApi(object):
 
         :param async_req bool
         :param int id: The identifier of the club. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryAthlete]
                  If the method is called asynchronously,
@@ -369,7 +369,7 @@ class ClubsApi(object):
 
         :param async_req bool
         :param int id: The identifier of the club. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryAthlete]
                  If the method is called asynchronously,
@@ -447,7 +447,7 @@ class ClubsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryClub]
                  If the method is called asynchronously,
@@ -470,7 +470,7 @@ class ClubsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryClub]
                  If the method is called asynchronously,

@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -318,18 +318,17 @@ class RoutesApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_routes_by_athlete_id(self, id, **kwargs):  # noqa: E501
+    def get_routes_by_athlete_id(self, **kwargs):  # noqa: E501
         """List Athlete Routes  # noqa: E501
 
-        Returns a list of the routes created by the authenticated athlete using their athlete ID. Private routes are filtered out unless requested by a token with read_all scope.  # noqa: E501
+        Returns a list of the routes created by the authenticated athlete. Private routes are filtered out unless requested by a token with read_all scope.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_routes_by_athlete_id(id, async_req=True)
+        >>> thread = api.get_routes_by_athlete_id(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: The identifier of the athlete. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[Route]
                  If the method is called asynchronously,
@@ -337,30 +336,29 @@ class RoutesApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_routes_by_athlete_id_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_routes_by_athlete_id_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_routes_by_athlete_id_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_routes_by_athlete_id_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_routes_by_athlete_id_with_http_info(self, id, **kwargs):  # noqa: E501
+    def get_routes_by_athlete_id_with_http_info(self, **kwargs):  # noqa: E501
         """List Athlete Routes  # noqa: E501
 
-        Returns a list of the routes created by the authenticated athlete using their athlete ID. Private routes are filtered out unless requested by a token with read_all scope.  # noqa: E501
+        Returns a list of the routes created by the authenticated athlete. Private routes are filtered out unless requested by a token with read_all scope.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_routes_by_athlete_id_with_http_info(id, async_req=True)
+        >>> thread = api.get_routes_by_athlete_id_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: The identifier of the athlete. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[Route]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'page', 'per_page']  # noqa: E501
+        all_params = ['page', 'per_page']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -375,16 +373,10 @@ class RoutesApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `get_routes_by_athlete_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
         if 'page' in params:

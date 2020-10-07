@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -15,12 +15,6 @@ import pprint
 import re  # noqa: F401
 
 import six
-
-from swagger_client.models.activity_type import ActivityType  # noqa: F401,E501
-from swagger_client.models.lat_lng import LatLng  # noqa: F401,E501
-from swagger_client.models.meta_activity import MetaActivity  # noqa: F401,E501
-from swagger_client.models.meta_athlete import MetaAthlete  # noqa: F401,E501
-from swagger_client.models.polyline_map import PolylineMap  # noqa: F401,E501
 
 
 class SummaryActivity(object):
@@ -37,7 +31,6 @@ class SummaryActivity(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'int',
         'external_id': 'str',
         'upload_id': 'int',
         'athlete': 'MetaAthlete',
@@ -67,6 +60,7 @@ class SummaryActivity(object):
         'private': 'bool',
         'flagged': 'bool',
         'workout_type': 'int',
+        'upload_id_str': 'str',
         'average_speed': 'float',
         'max_speed': 'float',
         'has_kudoed': 'bool',
@@ -79,7 +73,6 @@ class SummaryActivity(object):
     }
 
     attribute_map = {
-        'id': 'id',
         'external_id': 'external_id',
         'upload_id': 'upload_id',
         'athlete': 'athlete',
@@ -109,6 +102,7 @@ class SummaryActivity(object):
         'private': 'private',
         'flagged': 'flagged',
         'workout_type': 'workout_type',
+        'upload_id_str': 'upload_id_str',
         'average_speed': 'average_speed',
         'max_speed': 'max_speed',
         'has_kudoed': 'has_kudoed',
@@ -120,10 +114,9 @@ class SummaryActivity(object):
         'weighted_average_watts': 'weighted_average_watts'
     }
 
-    def __init__(self, id=None, external_id=None, upload_id=None, athlete=None, name=None, distance=None, moving_time=None, elapsed_time=None, total_elevation_gain=None, elev_high=None, elev_low=None, type=None, start_date=None, start_date_local=None, timezone=None, start_latlng=None, end_latlng=None, achievement_count=None, kudos_count=None, comment_count=None, athlete_count=None, photo_count=None, total_photo_count=None, map=None, trainer=None, commute=None, manual=None, private=None, flagged=None, workout_type=None, average_speed=None, max_speed=None, has_kudoed=None, gear_id=None, kilojoules=None, average_watts=None, device_watts=None, max_watts=None, weighted_average_watts=None):  # noqa: E501
+    def __init__(self, external_id=None, upload_id=None, athlete=None, name=None, distance=None, moving_time=None, elapsed_time=None, total_elevation_gain=None, elev_high=None, elev_low=None, type=None, start_date=None, start_date_local=None, timezone=None, start_latlng=None, end_latlng=None, achievement_count=None, kudos_count=None, comment_count=None, athlete_count=None, photo_count=None, total_photo_count=None, map=None, trainer=None, commute=None, manual=None, private=None, flagged=None, workout_type=None, upload_id_str=None, average_speed=None, max_speed=None, has_kudoed=None, gear_id=None, kilojoules=None, average_watts=None, device_watts=None, max_watts=None, weighted_average_watts=None):  # noqa: E501
         """SummaryActivity - a model defined in Swagger"""  # noqa: E501
 
-        self._id = None
         self._external_id = None
         self._upload_id = None
         self._athlete = None
@@ -153,6 +146,7 @@ class SummaryActivity(object):
         self._private = None
         self._flagged = None
         self._workout_type = None
+        self._upload_id_str = None
         self._average_speed = None
         self._max_speed = None
         self._has_kudoed = None
@@ -164,8 +158,6 @@ class SummaryActivity(object):
         self._weighted_average_watts = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
         if external_id is not None:
             self.external_id = external_id
         if upload_id is not None:
@@ -224,6 +216,8 @@ class SummaryActivity(object):
             self.flagged = flagged
         if workout_type is not None:
             self.workout_type = workout_type
+        if upload_id_str is not None:
+            self.upload_id_str = upload_id_str
         if average_speed is not None:
             self.average_speed = average_speed
         if max_speed is not None:
@@ -242,29 +236,6 @@ class SummaryActivity(object):
             self.max_watts = max_watts
         if weighted_average_watts is not None:
             self.weighted_average_watts = weighted_average_watts
-
-    @property
-    def id(self):
-        """Gets the id of this SummaryActivity.  # noqa: E501
-
-        The unique identifier of the activity  # noqa: E501
-
-        :return: The id of this SummaryActivity.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SummaryActivity.
-
-        The unique identifier of the activity  # noqa: E501
-
-        :param id: The id of this SummaryActivity.  # noqa: E501
-        :type: int
-        """
-
-        self._id = id
 
     @property
     def external_id(self):
@@ -924,6 +895,29 @@ class SummaryActivity(object):
         """
 
         self._workout_type = workout_type
+
+    @property
+    def upload_id_str(self):
+        """Gets the upload_id_str of this SummaryActivity.  # noqa: E501
+
+        The unique identifier of the upload in string format  # noqa: E501
+
+        :return: The upload_id_str of this SummaryActivity.  # noqa: E501
+        :rtype: str
+        """
+        return self._upload_id_str
+
+    @upload_id_str.setter
+    def upload_id_str(self, upload_id_str):
+        """Sets the upload_id_str of this SummaryActivity.
+
+        The unique identifier of the upload in string format  # noqa: E501
+
+        :param upload_id_str: The upload_id_str of this SummaryActivity.  # noqa: E501
+        :type: str
+        """
+
+        self._upload_id_str = upload_id_str
 
     @property
     def average_speed(self):

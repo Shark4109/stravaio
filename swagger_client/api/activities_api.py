@@ -3,7 +3,7 @@
 """
     Strava API v3
 
-    Strava API  # noqa: E501
+    The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your “Authorization Callback Domain” to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section “client code” at https://developers.strava.com/docs.  # noqa: E501
 
     OpenAPI spec version: 3.0.0
     
@@ -45,12 +45,11 @@ class ActivitiesApi(object):
         :param async_req bool
         :param str name: The name of the activity. (required)
         :param str type: Type of activity. For example - Run, Ride etc. (required)
-        :param ERRORUNKNOWN start_date_local: ISO 8601 formatted date time. (required)
+        :param datetime start_date_local: ISO 8601 formatted date time. (required)
         :param int elapsed_time: In seconds. (required)
         :param str description: Description of the activity.
         :param float distance: In meters.
         :param int trainer: Set to 1 to mark as a trainer activity.
-        :param ERRORUNKNOWN photo_ids: List of native photo ids to attach to the activity.
         :param int commute: Set to 1 to mark as commute.
         :return: DetailedActivity
                  If the method is called asynchronously,
@@ -75,19 +74,18 @@ class ActivitiesApi(object):
         :param async_req bool
         :param str name: The name of the activity. (required)
         :param str type: Type of activity. For example - Run, Ride etc. (required)
-        :param ERRORUNKNOWN start_date_local: ISO 8601 formatted date time. (required)
+        :param datetime start_date_local: ISO 8601 formatted date time. (required)
         :param int elapsed_time: In seconds. (required)
         :param str description: Description of the activity.
         :param float distance: In meters.
         :param int trainer: Set to 1 to mark as a trainer activity.
-        :param ERRORUNKNOWN photo_ids: List of native photo ids to attach to the activity.
         :param int commute: Set to 1 to mark as commute.
         :return: DetailedActivity
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'type', 'start_date_local', 'elapsed_time', 'description', 'distance', 'trainer', 'photo_ids', 'commute']  # noqa: E501
+        all_params = ['name', 'type', 'start_date_local', 'elapsed_time', 'description', 'distance', 'trainer', 'commute']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -143,8 +141,6 @@ class ActivitiesApi(object):
             form_params.append(('distance', params['distance']))  # noqa: E501
         if 'trainer' in params:
             form_params.append(('trainer', params['trainer']))  # noqa: E501
-        if 'photo_ids' in params:
-            form_params.append(('photo_ids', params['photo_ids']))  # noqa: E501
         if 'commute' in params:
             form_params.append(('commute', params['commute']))  # noqa: E501
 
@@ -282,7 +278,7 @@ class ActivitiesApi(object):
 
         :param async_req bool
         :param int id: The identifier of the activity. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[Comment]
                  If the method is called asynchronously,
@@ -306,7 +302,7 @@ class ActivitiesApi(object):
 
         :param async_req bool
         :param int id: The identifier of the activity. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[Comment]
                  If the method is called asynchronously,
@@ -385,7 +381,7 @@ class ActivitiesApi(object):
 
         :param async_req bool
         :param int id: The identifier of the activity. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryAthlete]
                  If the method is called asynchronously,
@@ -409,7 +405,7 @@ class ActivitiesApi(object):
 
         :param async_req bool
         :param int id: The identifier of the activity. (required)
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryAthlete]
                  If the method is called asynchronously,
@@ -584,7 +580,7 @@ class ActivitiesApi(object):
         :param async_req bool
         :param int before: An epoch timestamp to use for filtering activities that have taken place before a certain time.
         :param int after: An epoch timestamp to use for filtering activities that have taken place after a certain time.
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryActivity]
                  If the method is called asynchronously,
@@ -609,7 +605,7 @@ class ActivitiesApi(object):
         :param async_req bool
         :param int before: An epoch timestamp to use for filtering activities that have taken place before a certain time.
         :param int after: An epoch timestamp to use for filtering activities that have taken place after a certain time.
-        :param int page: Page number.
+        :param int page: Page number. Defaults to 1.
         :param int per_page: Number of items per page. Defaults to 30.
         :return: list[SummaryActivity]
                  If the method is called asynchronously,
